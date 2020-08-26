@@ -47,7 +47,7 @@ jobs:
        run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
      - name: Update Packages
-       run: cd openwrt && cp -r ../scripts/$DIY_P1_SH ./ &&  /bin/bash $DIY_P1_SH
+       run: cd openwrt && chmod +x  ../scripts/$DIY_P1_SH  && ../scripts/$DIY_P1_SH
 
      - name: Download feeds
        run: cd openwrt &&  ./scripts/feeds update -a
@@ -56,7 +56,7 @@ jobs:
        run: |
            curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/x86-64/$CONFIG_FILE > openwrt/.config
            cd openwrt
-           cp -r ../scripts/$DIY_P2_SH  ./ &&  /bin/bash $DIY_P2_SH
+           chmod +x ../scripts/$DIY_P2_SH  &&../scripts/$DIY_P2_SH
 
      - name: Install feeds
        run: cd openwrt && ./scripts/feeds install -a 
@@ -96,12 +96,12 @@ jobs:
      - name: Upload Firmware
        uses: actions/upload-artifact@main
        with:
-          name: SirpdboyOpenWrt-IPV6-Firmware
+          name: SirpdboyOpenWrt-mini-Firmware
           path: ./new/firmware
      - name: Upload  IPK
        uses: actions/upload-artifact@main
        with:
-          name: SirpdboyOpenWrt-IPV6-Ipk
+          name: SirpdboyOpenWrt-mini-Ipk
           path: ./new/package
 
      - name: Upload firmware to cowtransfer
