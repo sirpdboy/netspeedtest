@@ -82,7 +82,7 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
-		  
+
      - name: Prepare Artifact
        run: |
         mkdir -p ./new/firmware
@@ -92,7 +92,7 @@ jobs:
         find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./new/firmware
         cd ./new/firmware
         gzip *.img
-        
+
      - name: Upload Firmware
        uses: actions/upload-artifact@main
        with:
