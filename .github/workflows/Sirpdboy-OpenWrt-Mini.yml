@@ -52,8 +52,8 @@ jobs:
 
      - name: Update config
        run: |
-         cat $CONFIG_FILE > openwrt/.config
          cd openwrt
+         cat ../$CONFIG_FILE  > .config
          cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
          /bin/bash ./$DIY_P2_SH
 
