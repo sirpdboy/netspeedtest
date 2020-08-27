@@ -53,7 +53,7 @@ jobs:
        run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         cd openwrt
-        cp ../scripts/$DIY_P1_SH ./
+        cp $GITHUB_WORKSPACE/$DIY_P1_SH ./
         /bin/bash ./$DIY_P1_SH
      - name: Download feeds
        run: cd openwrt &&  ./scripts/feeds update -a
