@@ -37,15 +37,9 @@ jobs:
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-          sudo timedatectl set-timezone "$TD"
-          sudo mkdir -p /workdir
-          sudo chown $USER:$GROUPS /workdir
+        sudo timedatectl set-timezone "$TD"
      - name: Download openwrt
-       working-directory: /workdir
-       run: |
-        df -hT $PWD
-        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+       run: git clone  $REPO_URL openwrt
 
      - name: Update Packages
        run: |
@@ -58,14 +52,14 @@ jobs:
 
      - name: Update config
        run: |
-        [ -e $CONFIG_FILE ] && cat $CONFIG_FILE > openwrt/.config
-        cd openwrt
-        make defconfig
-        cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
-        /bin/bash ./$DIY_P2_SH
+         [ -e $CONFIG_FILE ] && cat $CONFIG_FILE > openwrt/.config
+         cd openwrt
+         make defconfig
+         cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
+         /bin/bash ./$DIY_P2_SH
 
      - name: Install feeds
-       run: cd openwrt && ./scripts/feeds install -a 
+       run: cd openwrt && ./scripts/feeds install -a
 
      - name: Make Download
        run: |
