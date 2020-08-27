@@ -48,7 +48,7 @@ jobs:
         cp $GITHUB_WORKSPACE/$DIY_P1_SH ./
         /bin/bash ./$DIY_P1_SH
      - name: Download feeds
-       run: cd openwrt &&  ./scripts/feeds update -a
+       run: cd openwrt &&  ./scripts/feeds update -a  && ./scripts/feeds install -a
 
      - name: Update config
        run: |
@@ -56,9 +56,6 @@ jobs:
          cat ../$CONFIG_FILE  > .config
          cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
          /bin/bash ./$DIY_P2_SH
-
-     - name: Install feeds
-       run: cd openwrt && ./scripts/feeds install -a
 
      - name: Make Download
        run: |
