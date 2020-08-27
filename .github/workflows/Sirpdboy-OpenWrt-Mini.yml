@@ -58,7 +58,6 @@ jobs:
 
      - name: Update config
        run: |
-        [ -e files ] && mv files/*.* openwrt
         [ -e $CONFIG_FILE ] && cat $CONFIG_FILE > openwrt/.config
         cd openwrt
         make defconfig
