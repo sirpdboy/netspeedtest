@@ -43,9 +43,9 @@ jobs:
 
      - name: Update Packages
        run: |
-        cat $FEEDS_CONF > openwrt/feeds.conf.default
+        cat afeeds.conf.default > ./openwrt/feeds.conf.default
         cd openwrt
-        cp $GITHUB_WORKSPACE/$DIY_P1_SH ./
+        cp ../$DIY_P1_SH ./
         /bin/bash ./$DIY_P1_SH
      - name: Download feeds
        run: cd openwrt &&  ./scripts/feeds update -a  && ./scripts/feeds install -a
@@ -53,8 +53,8 @@ jobs:
      - name: Update config
        run: |
          cd openwrt
-         cat ../$CONFIG_FILE  > .config
-         cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
+         cat ../miniappdrv.config  > ./.config
+         cp ../$DIY_P2_SH ./
          /bin/bash ./$DIY_P2_SH
 
      - name: Make Download
