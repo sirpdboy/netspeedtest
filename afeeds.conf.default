@@ -1,4 +1,4 @@
-src-git mypackages https://github.com/siropboy/mypackages
+#src-git mypackages https://github.com/siropboy/mypackages
 src-git packages https://github.com/coolsnowwolf/packages
 src-git luci https://github.com/coolsnowwolf/luci
 src-git routing https://git.openwrt.org/feed/routing.git
