@@ -47,7 +47,7 @@ jobs:
        run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
      - name: Update Packages
-       run: cd openwrt && chmod +x  ../scripts/$DIY_P1_SH  && ../scripts/$DIY_P1_SH
+       run: cd openwrt && ./chmod +x  ../scripts/$DIY_P1_SH  && ../scripts/$DIY_P1_SH
 
      - name: Download feeds
        run: cd openwrt &&  ./scripts/feeds update -a
@@ -56,7 +56,7 @@ jobs:
        run: |
            curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/x86-64/$CONFIG_FILE > openwrt/.config
            cd openwrt
-           chmod +x ../scripts/$DIY_P2_SH  &&../scripts/$DIY_P2_SH
+           ./chmod +x ../scripts/$DIY_P2_SH  &&../scripts/$DIY_P2_SH
 
      - name: Install feeds
        run: cd openwrt && ./scripts/feeds install -a 
