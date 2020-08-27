@@ -43,7 +43,7 @@ jobs:
 
      - name: Update Packages
        run: |
-        [ -e $FEEDS_CONF ] && cat $FEEDS_CONF > openwrt/feeds.conf.default
+        cat $FEEDS_CONF > openwrt/feeds.conf.default
         cd openwrt
         cp $GITHUB_WORKSPACE/$DIY_P1_SH ./
         /bin/bash ./$DIY_P1_SH
@@ -52,7 +52,7 @@ jobs:
 
      - name: Update config
        run: |
-         [ -e $CONFIG_FILE ] && cat $CONFIG_FILE > openwrt/.config
+         cat $CONFIG_FILE > openwrt/.config
          cd openwrt
          cp $GITHUB_WORKSPACE/$DIY_P2_SH ./
          /bin/bash ./$DIY_P2_SH
