@@ -1,17 +1,19 @@
-#=================================================
-# Description: Build OpenWrt using GitHub Actions
-# Author: sirpdboy
-# https://github.com/sirpdboy/Openwrt
-
 name: Sirpdboy-OpenWrt-Mini
+
 on:
-  push:
-    branches: 
-      - master
+  repository_dispatch:
+  release:
+    types: published
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - '5.config'
   schedule:
-    - cron: 0 20 */2 * *
+    - cron: 0 21 */3 * * 
   watch:
     types: started
+
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -19,54 +21,68 @@ env:
   CONFIG_FILE: miniappdrv.config
   DIY_P1_SH: update_pack.sh
   DIY_P2_SH: update_init.sh
-  TD: Asia/Shanghai
+  TZ: Asia/Shanghai
 
 jobs:
-  Openwrt_Mini_Build:
+  build:
     runs-on: ubuntu-18.04
-    steps:
-     - name: Checkout
-       uses: actions/checkout@main
+    if: github.event.repository.owner.id == github.event.sender.id
 
-     - name: Init Build
-       env:
+    steps:
+    - name: 准备工作
+      uses: actions/checkout@main
+
+    - name: 搭建编译环境
+      env:
         DEBIAN_FRONTEND: noninteractive
-       run: |
+      run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TD"
-     - name: Download openwrt
-       run: git clone  $REPO_URL openwrt
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
 
-     - name: Update Packages
-       run: |
-        cat afeeds.conf.default > ./openwrt/feeds.conf.default
+    - name: 下载固件源码
+      working-directory: /workdir
+      run: |
+        df -hT $PWD
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: 读取feeds配置
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
         cd openwrt
-        cp ../$DIY_P1_SH ./
-        /bin/bash ./$DIY_P1_SH
-     - name: Download feeds
-       run: cd openwrt &&  ./scripts/feeds update -a  && ./scripts/feeds install -a
+        $GITHUB_WORKSPACE/$DIY_P1_SH
 
-     - name: Update config
-       run: |
-         cd openwrt
-         cat ../miniappdrv.config  > ./.config
-         cp ../$DIY_P2_SH ./
-         /bin/bash ./$DIY_P2_SH
+    - name: 下载feeds插件
+      run: cd openwrt && ./scripts/feeds update -a
 
-     - name: Make Download
-       run: |
-         cd openwrt
-         make defconfig
-         make -j8 download
-         find dl -size -1024c -exec ls -l {} \;
-         find dl -size -1024c -exec rm -f {} \;
+    - name: 安装feeds插件
+      run: cd openwrt && ./scripts/feeds install -a
 
-     - name: Compile Openwrt
-       run: |
+    - name: 自定义固件设置
+      run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
+    - name: 下载package文档
+      id: package
+      run: |
+        cd openwrt
+        make defconfig
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    - name: Compile Openwrt
+      run: |
           cd openwrt
           echo -e "$(nproc) thread build."
           make -j$(nproc) || make -j1 V=s
@@ -79,8 +95,8 @@ jobs:
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
 
-     - name: Prepare Artifact
-       run: |
+    - name: Prepare Artifact
+      run: |
         mkdir -p ./new/firmware
         mkdir -p ./new/package
         cp -rf $(find ./openwrt/bin/packages/ -type f -name "*.ipk") ./new/package
@@ -89,24 +105,24 @@ jobs:
         cd ./new/firmware
         gzip *.img
 
-     - name: Upload Firmware
-       uses: actions/upload-artifact@main
-       with:
+    - name: Upload Firmware
+      uses: actions/upload-artifact@main
+      with:
           name: SirpdboyOpenWrt-mini-Firmware
           path: ./new/firmware
-     - name: Upload  IPK
-       uses: actions/upload-artifact@main
-       with:
+    - name: Upload  IPK
+      uses: actions/upload-artifact@main
+      with:
           name: SirpdboyOpenWrt-mini-Ipk
           path: ./new/package
 
-     - name: Upload firmware to cowtransfer
-       run: |
+    - name: Upload firmware to cowtransfer
+      run: |
          curl -fsSL git.io/file-transfer | sh
          ./transfer cow --block 2621440 -s -p 64 --no-progress ./new/firmware 2>&1 | tee cowtransfer.log
          echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-     - name: Upload Firmware wetransfer
-       run: |
+    - name: Upload Firmware wetransfer
+      run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ./new/firmware 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
