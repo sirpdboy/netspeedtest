@@ -37,7 +37,7 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 ```Brach
     # 下载源码
     
-    git clone https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest package/luci-app-NetSpeedTest
+    git clone https://github.com/sirpdboy/NetSpeedTest/ package/NetSpeedTest
     
     make menuconfig
  ```   
@@ -48,7 +48,7 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 
 
 # My other project
-NetSpeedTest ：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
+NetSpeedTest ：https://github.com/sirpdboy/NetSpeedTest
 
 autopoweroff : https://github.com/sirpdboy/luci-app-autopoweroff
 
@@ -59,7 +59,7 @@ btmob theme : https://github.com/sirpdboy/luci-theme-btmob
 advanced : https://github.com/sirpdboy/luci-app-advanced
 
 
-## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](# 说明-)
+## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-)
 
 源码来源：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
