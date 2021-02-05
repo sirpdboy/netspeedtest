@@ -1,0 +1,430 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "SPEEDTEST" "" "October 2019" "" ""
+.
+.SH "Name"
+\fBspeedtest\fR \- Speedtest CLI by Ookla is the official command line client for testing the speed and performance of your internet connection\.
+.
+.SH "Version"
+1\.0\.0
+.
+.SH "Synopsis"
+.
+.nf
+
+    speedtest [\-aAbBfhiIpPsv] [\-\-ca\-certificate=path] [\-\-format=[=format\-type]] [\-\-help] [\-\-interface=interface]
+    [\-\-ip=ip_address] [\-\-output\-header] [\-\-precision=num_decimal_places] [\-\-progress=yes|no]
+    [\-\-selection\-details] [\-\-server\-id=id] [\-\-servers] [\-\-unit=[=unit\-of\-measure]] [\-\-version]
+.
+.fi
+.
+.SH "Description"
+\fBspeedtest\fR is an application that measures the latency, jitter, packet loss, download bandwidth, and upload bandwidth of the network connection between the client and a nearby Speedtest Server\.
+.
+.SH "Options"
+.
+.IP "\(bu" 4
+\fB\-h, \-\-help\fR
+.
+.br
+Print usage information
+.
+.IP "\(bu" 4
+\fB\-v\fR Logging verbosity, specify multiple times for higher verbosity (e\.g\. \fB\-vvv\fR)
+.
+.IP "\(bu" 4
+\fB\-V, \-\-version\fR Print version number
+.
+.IP "\(bu" 4
+\fB\-L, \-\-servers\fR List nearest servers
+.
+.IP "\(bu" 4
+\fB\-\-selection\-details\fR Show server selection details
+.
+.IP "\(bu" 4
+\fB\-s\fR \fIid\fR, \fB\-\-server\-id\fR=\fIid\fR
+.
+.br
+Specify a server from the server list using its id
+.
+.IP "\(bu" 4
+\fB\-o\fR \fIhostname\fR, \fB\-\-host\fR=\fIhostname\fR
+.
+.br
+Specify a server from the server list using its hostname
+.
+.IP "\(bu" 4
+\fB\-f\fR \fIformat_type\fR \fB\-\-format\fR=\fIformat_type\fR
+.
+.br
+Output format (default = human\-readable) Note: Machine readable formats (csv, tsv, json, jsonl, json\-pretty) use bytes as the unit of measure with max precision\.
+.
+.IP
+\fIformat_type\fR values are as follows:
+.
+.IP "\(bu" 4
+\fBhuman\-readable\fR human readable output
+.
+.IP "\(bu" 4
+\fBcsv\fR comma separated values
+.
+.IP "\(bu" 4
+\fBtsv\fR tab separated values
+.
+.IP "\(bu" 4
+\fBjson\fR javascript object notation (compact)
+.
+.IP "\(bu" 4
+\fBjsonl\fR javascript object notation (lines)
+.
+.IP "\(bu" 4
+\fBjson\-pretty\fR javascript object notation (pretty)
+.
+.IP "" 0
+
+.
+.IP "\(bu" 4
+\fB\-\-output\-header\fR Show output header for CSV and TSV formats
+.
+.IP "\(bu" 4
+\fB\-u\fR\fIunit_of_measure\fR\fB,\~\-\-unit\fR\fIunit_of_measure\fR Output unit for displaying speeds (Note: this is only applicable for ‘human\-readable’ output format and the default unit is Mbps)
+.
+.IP "\(bu" 4
+\fBbps\fR bits per second (decimal prefix)
+.
+.IP "\(bu" 4
+\fBkbps\fR kilobits per second (decimal prefix)
+.
+.IP "\(bu" 4
+\fBMbps\fR megabits per second (decimal prefix)
+.
+.IP "\(bu" 4
+\fBGbps\fR gigabits per second (decimal prefix)
+.
+.IP "\(bu" 4
+\fBkibps\fR kilobits per second (binary prefix)
+.
+.IP "\(bu" 4
+\fBMibps\fR megabits per second (binary prefix)
+.
+.IP "\(bu" 4
+\fBGibps\fR gigabits per second (binary prefix)
+.
+.IP "\(bu" 4
+\fBB/s\fR bytes per second
+.
+.IP "\(bu" 4
+\fBkB/s\fR kilobytes per second
+.
+.IP "\(bu" 4
+\fBMB/s\fR megabytes per second
+.
+.IP "\(bu" 4
+\fBGiB/s\fR gigabytes per second
+.
+.IP "\(bu" 4
+\fBauto\-binary\-bytes\fR automatic in binary bytes
+.
+.IP "\(bu" 4
+\fBauto\-decimal\-bytes\fR automatic in decimal bytes
+.
+.IP "\(bu" 4
+\fBauto\-binary\-bytes\fR automatic in binary bits
+.
+.IP "\(bu" 4
+\fBauto\-binary\-bytes\fR automatic in decimal bits
+.
+.IP "" 0
+
+.
+.IP "\(bu" 4
+\fB\-a\fR
+.
+.br
+Shortcut for [\fB\-u auto\-decimal\-bits\fR]
+.
+.IP "\(bu" 4
+\fB\-A\fR
+.
+.br
+Shortcut for [\fB\-u auto\-decimal\-bytes\fR]
+.
+.IP "\(bu" 4
+\fB\-b\fR
+.
+.br
+Shortcut for [\fB\-u auto\-binary\-bits\fR]
+.
+.IP "\(bu" 4
+\fB\-B\fR
+.
+.br
+Shortcut for [\fB\-u auto\-binary\-bytes\fR]
+.
+.IP "\(bu" 4
+\fB\-P\fR \fIdecimal_places\fR \fB\-\-precision\fR=\fIdecimal_places\fR
+.
+.br
+Number of decimal_places to use (default = 2, valid = 0\-8)
+.
+.IP "\(bu" 4
+\fB\-p\fR \fIyes\fR|\fIno\fR \fB\-\-progress\fR=\fIyes\fR|\fIno\fR
+.
+.br
+Enable or disable progress bar (default = yes when interactive)
+.
+.IP "\(bu" 4
+\fB\-I\fR \fIinterface\fR \fB\-\-interface\fR=\fIinterface\fR Attempt to bind to the specified interface when connecting to servers
+.
+.IP "\(bu" 4
+\fB\-i\fR \fIip_address\fR \fB\-\-ip\fR=\fIip_address\fR Attempt to bind to the specified IP address when connecting to servers
+.
+.IP "\(bu" 4
+\fB\-\-ca\-certificate\fR=\fIpath\fR Path to CA Certificate bundle, see note below\.
+.
+.IP "" 0
+.
+.SH "Terms of Use and Privacy Policy Notices"
+You may only use this Speedtest software and information generated from it for personal, non\-commercial use, through a command line interface on a personal computer\. Your use of this software is subject to the End User License Agreement, Terms of Use and Privacy Policy at these URLs:
+.
+.IP "\(bu" 4
+\fIhttps://www\.speedtest\.net/about/eula\fR
+.
+.IP "\(bu" 4
+\fIhttps://www\.speedtest\.net/about/terms\fR
+.
+.IP "\(bu" 4
+\fIhttps://www\.speedtest\.net/about/privacy\fR
+.
+.IP "" 0
+.
+.SH "Output"
+Upon successful execution, the application will exit with an exit code of 0\. The result will include latency, jitter, download, upload, packet loss (where available), and a result URL\.
+.
+.P
+Latency and jitter will be represented in milliseconds\. Download and upload units will depend on the output format as well as if a unit was specified\. The human\-readable format defaults to Mbps and any machine\-readable formats (csv, tsv, json, jsonl, json\-pretty) use bytes as the unit of measure with max precision\. Packet loss is represented as a percentage, or \fBNot available\fR when packet loss is unavailable in the executing network environment\.
+.
+.P
+The Result URL is available to share your result, appending \fB\.png\fR to the Result URL will create a shareable result image\.
+.
+.P
+\fIExample human\-readable result:\fR
+.
+.IP "" 4
+.
+.nf
+
+$ speedtest
+    Speedtest by Ookla
+
+     Server: Speedtest\.net \- New York, NY (id = 10390)
+        ISP: Comcast Cable
+    Latency:    57\.81 ms   (3\.65 ms jitter)
+   Download:    76\.82 Mbps (data used: 80\.9 MB)
+     Upload:    37\.58 Mbps (data used: 65\.3 MB)
+Packet Loss:     0\.0%
+ Result URL: https://www\.speedtest\.net/result/c/8ae1200c\-e639\-45e5\-8b55\-41421a079250
+.
+.fi
+.
+.IP "" 0
+.
+.SH "Network Timeout Values"
+By default, network requests set a timeout of \fB10\fR seconds\. The only exception to this is latency testing, which sets a timeout of \fB15\fR seconds\.
+.
+.SH "Fatal Errors"
+Upon fatal errors, the application will exit with a non\-zero exit code\.
+.
+.P
+\fBInitialization Fatal Error Examples:\fR
+.
+.P
+\fIConfiguration \- Couldn\'t connect to server (Network is unreachable)\fR
+.
+.P
+\fIConfiguration \- Could not retrieve or read configuration (ConfigurationError)\fR
+.
+.P
+\fBStage Execution Fatal Error Example:\fR
+.
+.P
+\fI[error] Error: [1] Latency test failed for HTTP\fR
+.
+.P
+\fI[error] Error: [36] Cannot open socket: Operation now in progress\fR
+.
+.P
+\fI[error] Failed to resolve host name\. Cancelling test suite\.\fR
+.
+.P
+\fI[error] Host resolve failed: Exec format error\fR
+.
+.P
+\fI[error] Cannot open socket: No route to host\fR
+.
+.P
+\fI[error] Server Selection \- Failed to find a working test server\. (NoServers)\fR
+.
+.SH "SSL Certificate Locations"
+By default the following paths are checked for CA certificate bundles on linux machines:
+.
+.IP "" 4
+.
+.nf
+
+/etc/ssl/certs/ca\-certificates\.crt
+/etc/pki/tls/certs/ca\-bundle\.crt
+/usr/share/ssl/certs/ca\-bundle\.crt
+/usr/local/share/certs/ca\-root\-nss\.crt
+/etc/ssl/cert\.pem
+.
+.fi
+.
+.IP "" 0
+.
+.P
+If the device under test does \fInot\fR have one of the above mentioned files, then the canonical and up to date CA certificate bundle provided by the curl project can be manually downloaded into a specific location\. This specific location can be provided as a parameter per the following example:
+.
+.IP "" 4
+.
+.nf
+
+wget https://curl\.haxx\.se/ca/cacert\.pem
+\./ookla \-\-ca\-certificate=\./cacert\.pem
+.
+.fi
+.
+.IP "" 0
+.
+.SH "Release Notes"
+.
+.SS "1\.0\.0 \- 10/29/2019"
+.
+.IP "\(bu" 4
+Initial release
+.
+.IP "" 0
+.
+.SH "Copyright Notices for Third\-Party Products/Libraries"
+This software incorporates free and open source third\-party libraries, including:
+.
+.IP "\(bu" 4
+boost \fIhttps://www\.boost\.org/\fR
+.
+.IP "\(bu" 4
+libcurl \fIhttps://curl\.haxx\.se/libcurl/\fR
+.
+.IP "\(bu" 4
+petopt \fIhttps://www\.lysator\.liu\.se/~pen/petopt/\fR
+.
+.IP "\(bu" 4
+mbed TLS \fIhttps://tls\.mbed\.org/\fR
+.
+.IP "\(bu" 4
+ca\-certificates extract \fIhttps://curl\.haxx\.se/docs/caextract\.html\fR
+.
+.IP "\(bu" 4
+L\. Peter Deutsch’s md5 \fIhttps://sourceforge\.net/projects/libmd5\-rfc/files/\fR
+.
+.IP "\(bu" 4
+getopt\.h \fIin%20Windows%20version%20of%20this%20software\fR
+.
+.IP "\(bu" 4
+tiny\-aes \fIhttps://github\.com/kokke/tiny\-AES\-c\fR
+.
+.IP "\(bu" 4
+PicoSHA2 \fIhttps://github\.com/okdshin/PicoSHA2\fR
+.
+.IP "\(bu" 4
+musl \fIhttps://www\.musl\-libc\.org/\fR
+.
+.IP "" 0
+.
+.P
+Inclusion of mbed TLS is subject to presentation of the following license terms to recipients of this software: \fIhttp://www\.apache\.org/licenses/LICENSE\-2\.0\fR (a copy of which is included with the documentation of this software)
+.
+.SS "Inclusion of libcurl is subject to distribution of the software with the following notice:"
+.
+.nf
+
+Copyright (c) 1996 \- 2019, Daniel Stenberg, daniel@haxx\.se, and many contributors,
+see the THANKS file\.  All rights reserved\.  Permission to use, copy, modify, and distribute
+this software for any purpose with or without fee is hereby granted, provided that
+the above copyright notice and this permission notice appear in all copies\.
+.
+.fi
+.
+.SS "Inclusion of getopt\.h is subject to distribution of the software with the following notice:"
+.
+.nf
+
+DISCLAIMER
+This file is part of the mingw\-w64 runtime package\.
+
+The mingw\-w64 runtime package and its code is distributed in the hope that it
+will be useful but WITHOUT ANY WARRANTY\.  ALL WARRANTIES, EXPRESSED OR
+IMPLIED ARE HEREBY DISCLAIMED\.  This includes but is not limited to
+warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\.
+
+
+Copyright (c) 2002 Todd C\. Miller <Todd\.Miller@courtesan\.com>
+
+Permission to use, copy, modify, and distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies\.
+
+Copyright (c) 2000 The NetBSD Foundation, Inc\.
+All rights reserved\.
+
+This code is derived from software contributed to The NetBSD Foundation
+by Dieter Baron and Thomas Klausner\.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1\. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer\.
+2\. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution\.
+.
+.fi
+.
+.SS "Inclusion of PicoSHA2 is subject to distribution of the software with the following notice:"
+.
+.nf
+
+Copyright (c) 2017 okdshin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software\.
+.
+.fi
+.
+.SS "Inclusion of musl is subject to distribution of the software with the following notice:"
+.
+.nf
+
+Copyright © 2005\-2019 Rich Felker, et al\.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software\.
+.
+.fi
+
