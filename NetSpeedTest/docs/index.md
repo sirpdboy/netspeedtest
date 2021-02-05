@@ -1,4 +1,4 @@
-[![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=OpenWrt-DIY-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![][![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
+[![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 <a href="#readme">
     <img src="https://img.vim-cn.com/a1/8713845a4aa922ac96619b0d2fb3d6919d37fc.png" alt="图飞了😂" title="NetSpeedTest" align="right" height="180" />
 </a>
@@ -6,16 +6,17 @@
 [NetSpeedTest — 网络速度测试](https://github.com/sirpdboy/NetSpeedTest)
 ======================
 
-[![](https://img.shields.io/badge/-目录:-696969.svg)](#readme) [![](https://img.shields.io/badge/-基本介绍-F5F5F5.svg)](#基本介绍-) [![](https://img.shields.io/badge/-近期更新-F5F5F5.svg)](#近期更新-) [![](https://img.shields.io/badge/-注意事项-F5F5F5.svg)](#注意事项-) [![](https://img.shields.io/badge/-OpenWrt小贴士-F5F5F5.svg)](#openwrt-小贴士-) [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) [![](https://img.shields.io/badge/-鸣谢-F5F5F5.svg)](#鸣谢-)
+[![](https://img.shields.io/badge/-目录:-696969.svg)](#readme) [![](https://img.shields.io/badge/-写在前面-F5F5F5.svg)](#写在前面-) [![](https://img.shields.io/badge/-编译使用方法-F5F5F5.svg)](#编译使用方法-) [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-) [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) 
 
 请 **认真阅读完毕** 本页面，本页面包含注意事项和如何使用。
 
 a new NetSpeedTest luci app bese luci-app-NetSpeedTest
+-
 
-Intro
-写在前面：
+## 写在前面：[![](https://img.shields.io/badge/-写在前面-F5F5F5.svg)](#写在前面-)
+
     一直在找OPENWRT上测试速度的插件，苦寻不到，于是有了它!
-    此插件目前只能测试内网，后期有时间加入外网网络速度测试。
+此插件目前只能测试内网，后期有时间加入外网网络速度测试。
 
 1.内网测速基于iperf3 插件，服务端路由器如果没有安装请先安装此ipk插件。
 
@@ -32,21 +33,21 @@ Intro
 7.新修改插件难免有bug 请不要大惊小怪。欢迎提交bug。
 
 
-### 编译使用方法
+## 编译使用方法 [![](https://img.shields.io/badge/-编译使用方法-F5F5F5.svg)](#编译使用方法-)
 ```Brach
-    #下载源码
+    # 下载源码
     
     git clone https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest package/luci-app-NetSpeedTest
     
     make menuconfig
-    
-    #编译
-    
+ ```   
+    # 编译
+ ```Brach   
     make package/luci-app-NetSpeedTest/{clean,compile} V=s
-	
+ ``` 	
 
 
-#My other project
+# My other project
 NetSpeedTest ：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
 autopoweroff : https://github.com/sirpdboy/luci-app-autopoweroff
@@ -58,13 +59,13 @@ btmob theme : https://github.com/sirpdboy/luci-theme-btmob
 advanced : https://github.com/sirpdboy/luci-app-advanced
 
 
-### 说明
+## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](# 说明-)
 
 源码来源：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
 
 
-## 捐助 [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-)
+## 捐助 [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) 
 
 **如果你觉得此项目对你有帮助，请捐助我们，以使项目能持续发展，更加完善。··请作者喝杯咖啡~~~**
 

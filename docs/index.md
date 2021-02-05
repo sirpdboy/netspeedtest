@@ -1,4 +1,4 @@
-[![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=OpenWrt-DIY-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
+[![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 <a href="#readme">
     <img src="https://img.vim-cn.com/a1/8713845a4aa922ac96619b0d2fb3d6919d37fc.png" alt="图飞了😂" title="NetSpeedTest" align="right" height="180" />
 </a>
@@ -59,7 +59,7 @@ btmob theme : https://github.com/sirpdboy/luci-theme-btmob
 advanced : https://github.com/sirpdboy/luci-app-advanced
 
 
-## 说明[![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-) 
+## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](# 说明-)
 
 源码来源：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
