@@ -3,17 +3,17 @@
 -- The LuCI Network diagnosis and speed test <https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest>
 -- This is free software, licensed under the GNU General Public License v3.
 
-module("luci.controller.NetworkTest", package.seeall)
+module("luci.controller.netspeedtest", package.seeall)
 
 function index()
 	local uci = require("luci.model.uci").cursor()
 	local page
-	page = entry({"admin", "network", "NetworkTest"}, template("NetworkTest/NetworkTest"), "NetworkTest", 90)
+	page = entry({"admin", "network", "NetSpeedTest"}, template("NetSpeedTest/NetSpeedTest"), "NetSpeedTest", 90)
 	page.dependent = true
 	
 	page = entry({"admin", "network", "diag_iperf3"}, call("diag_iperf3"), nil)
 	page.leaf = true
-	
+
 	page = entry({"admin", "network", "diag_iperf36"}, call("diag_iperf36"), nil)
 	page.leaf = true
 	page = entry({"admin", "network","diag_ping"}, call("diag_ping"), nil)
