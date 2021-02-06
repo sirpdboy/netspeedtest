@@ -11,7 +11,7 @@ LUCI_DEPENDS:=+iperf3
 LUCI_PKGARCH:=all
 PKG_NAME:=luci-app-netspeedtest
 PKG_VERSION:=1.0
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 LUCI_URL:=https://www.github.com/sirpdboy/NetSpeedTest/luci-app-netspeedtest
 include ../../luci.mk
 

@@ -56,9 +56,7 @@ function testlan(cmd)
 		end
 
 		return
-	end
 
-	luci.http.status(500, "Bad Network")
 end
 
 
