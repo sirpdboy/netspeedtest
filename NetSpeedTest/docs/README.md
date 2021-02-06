@@ -50,7 +50,7 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
   ```Brach
    # 更新feeds，并安装主题：
     scripts/feeds update NetSpeedTest
-	scripts/feeds install luci-theme-NetSpeedTest
+	scripts/feeds install luci-app-NetSpeedTest
  ``` 	
 
 ## 下载源码方法二：
@@ -64,7 +64,7 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 ## 配置菜单
  ```Brach
     make menuconfig
-	# 找到 LuCI -> Themes, 选择 luci-theme-NetSpeedTest, 保存后退出。
+	# 找到 LuCI -> Applications, 选择 luci-app-NetSpeedTest, 保存后退出。
  ``` 
 ## 编译
  ```Brach 
@@ -76,14 +76,20 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 
 源码来源：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
-### 你可以随意使用其中的源码，但请注明出处。
+
+你可以随意使用其中的源码，但请注明出处。
+============================
 
 # My other project
 网络速度测试 ：https://github.com/sirpdboy/NetSpeedTest
 
 定时关机重启 : https://github.com/sirpdboy/luci-app-autopoweroff
 
+关机功能插件 : https://github.com/sirpdboy/luci-app-poweroffdevice
+
 opentopd主题 : https://github.com/sirpdboy/luci-theme-opentopd
+
+opentoks 主题: https://github.com/sirpdboy/luci-theme-opentoks [仿KOOLSAHRE主题]
 
 btmob 主题: https://github.com/sirpdboy/luci-theme-btmob
 
