@@ -25,11 +25,11 @@ msgstr "需要安装iperf3插件才能开启测试速度服务器"
 msgid "instructions:"
 msgstr "使用说明："
 
-#msgid "<br />
+msgid "<br />
 <u> < font color = '# ff0000' > the terminal machine of speed measurement must be in the same local area network as the speed measurement server. </font></u> <br />
 Use steps: A, start the speed measurement server, B, download the test client, C, run the speed measurement client, D, enter the server IP address. <br />
 <br />"
-#msgstr "<br />
+msgstr "<br />
   <u><font color='#FF0000'>测速的终端机器必须和测速服务器在同一个局域网络中。</font></u> <br />
   使用步骤：A、启动测速服务器端，B、下载测试客户端，C、运行测速客户端，D、输入服务端IP地址。 <br />
   <br />"
