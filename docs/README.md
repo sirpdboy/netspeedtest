@@ -3,10 +3,14 @@
     <img src="https://img.vim-cn.com/a1/8713845a4aa922ac96619b0d2fb3d6919d37fc.png" alt="图飞了😂" title="NetSpeedTest" align="right" height="180" />
 </a>
 
+欢迎来到sirpdboy的源码仓库！
+=
+Welcome to sirpdboy's  git source of packages
+-
 [NetSpeedTest — 网络速度测试](https://github.com/sirpdboy/NetSpeedTest)
 ======================
 
-[![](https://img.shields.io/badge/-目录:-696969.svg)](#readme) [![](https://img.shields.io/badge/-写在前面-F5F5F5.svg)](#写在前面-) [![](https://img.shields.io/badge/-编译使用方法-F5F5F5.svg)](#编译使用方法-) [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-) [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) 
+[![](https://img.shields.io/badge/-目录:-696969.svg)](#readme) [![](https://img.shields.io/badge/-写在前面-F5F5F5.svg)](#写在前面-) [![](https://img.shields.io/badge/-编译说明-F5F5F5.svg)](#编译说明-) [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-) [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) 
 
 请 **认真阅读完毕** 本页面，本页面包含注意事项和如何使用。
 
@@ -15,8 +19,8 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 
 ## 写在前面：[![](https://img.shields.io/badge/-写在前面-F5F5F5.svg)](#写在前面-)
 
-    一直在找OPENWRT上测试速度的插件，苦寻不到，于是有了它!
-此插件目前只能测试内网，后期有时间加入外网网络速度测试。
+ 一直在找OPENWRT上测试速度的插件，苦寻不到，于是有了它!
+此插件目前只能测试内网，后期测试稳定了再加入外网网络速度测试。
 
 1.内网测速基于iperf3 插件，服务端路由器如果没有安装请先安装此ipk插件。
 
@@ -32,38 +36,58 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 
 7.新修改插件难免有bug 请不要大惊小怪。欢迎提交bug。
 
+## 编译说明 [![](https://img.shields.io/badge/-编译说明-F5F5F5.svg)](#编译说明-) 
 
-## 编译使用方法 [![](https://img.shields.io/badge/-编译使用方法-F5F5F5.svg)](#编译使用方法-)
+将NetSpeedTest 主题添加至 LEDE/OpenWRT 源码的方法。
+
+## 下载源码方法一：
+编辑源码文件夹根目录feeds.conf.default并加入如下内容:
+
 ```Brach
-    # 下载源码
-    
-    git clone https://github.com/sirpdboy/NetSpeedTest/ package/NetSpeedTest
-    
-    make menuconfig
- ```   
-    # 编译
- ```Brach   
-    make package/luci-app-NetSpeedTest/{clean,compile} V=s
+    # feeds获取源码：
+    src-git NetSpeedTest  https://github.com/sirpdboy/NetSpeedTest
+ ``` 
+  ```Brach
+   # 更新feeds，并安装主题：
+    scripts/feeds update NetSpeedTest
+	scripts/feeds install luci-theme-NetSpeedTest
  ``` 	
 
-
-# My other project
-NetSpeedTest ：https://github.com/sirpdboy/NetSpeedTest
-
-autopoweroff : https://github.com/sirpdboy/luci-app-autopoweroff
-
-opentopd theme : https://github.com/sirpdboy/luci-theme-opentopd
-
-btmob theme : https://github.com/sirpdboy/luci-theme-btmob
-
-advanced : https://github.com/sirpdboy/luci-app-advanced
-
+## 下载源码方法二：
+ ```Brach
+    # 下载源码
+    
+    git clone https://github.com/sirpdboy/NetSpeedTest package/NetSpeedTest
+    
+    make menuconfig
+ ``` 
+## 配置菜单
+ ```Brach
+    make menuconfig
+	# 找到 LuCI -> Themes, 选择 luci-theme-NetSpeedTest, 保存后退出。
+ ``` 
+## 编译
+ ```Brach 
+    # 编译固件
+    make package/NetSpeedTest/luci-app-NetSpeedTest/{clean,compile} V=s
+```   
 
 ## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-)
 
 源码来源：https://github.com/sirpdboy/NetSpeedTest/luci-app-NetSpeedTest
 
+### 你可以随意使用其中的源码，但请注明出处。
 
+# My other project
+网络速度测试 ：https://github.com/sirpdboy/NetSpeedTest
+
+定时关机重启 : https://github.com/sirpdboy/luci-app-autopoweroff
+
+opentopd主题 : https://github.com/sirpdboy/luci-theme-opentopd
+
+btmob 主题: https://github.com/sirpdboy/luci-theme-btmob
+
+系统高级设置 : https://github.com/sirpdboy/luci-app-advanced
 
 ## 捐助 [![](https://img.shields.io/badge/-捐助-F5F5F5.svg)](#捐助-) 
 
