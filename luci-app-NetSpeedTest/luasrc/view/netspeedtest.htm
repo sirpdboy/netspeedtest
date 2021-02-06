@@ -6,14 +6,14 @@
 <%+header%>
 <%
 local fs   = require "nixio.fs"
-local has_iperf3 = fs.access("/bin/iperf3") or fs.access("/usr/bin/iperf3")
+local has_iperf = fs.access("/bin/iperf3") or fs.access("/usr/bin/iperf3")
 local has_ping6 = fs.access("/bin/ping6") or fs.access("/usr/bin/ping6")
 %>
 <script type="text/javascript" src="<%=resource%>/cbi.js"></script>
 <script type="text/javascript">//<![CDATA[
 	var stxhr = new XHR();
 
-	function update_status(field, proto)
+	function update_status(field,proto)
 	{
 		var tool = field.name;
 		var addr = field.value;
@@ -22,8 +22,8 @@ local has_ping6 = fs.access("/bin/ping6") or fs.access("/usr/bin/ping6")
 		var legend = document.getElementById('diag-rc-legend');
 		var output = document.getElementById('diag-rc-output');
 
-0		if (legend && output)
-		0{
+ if (legend && output)
+ {
 			output.innerHTML =
 				'<img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:middle" /> ' +
 				'<%:Waiting for command to complete...%>'
@@ -32,7 +32,7 @@ local has_ping6 = fs.access("/bin/ping6") or fs.access("/usr/bin/ping6")
 			legend.parentNode.style.display = 'block';
 			legend.style.display = 'inline';
 
-			stxhr.get('<%=url('status')%>/diag_' + tool + protocol + '/' + addr, null,
+			stxhr.get('<%=url('network')%>/diag_' + tool + protocol + '/' + addr, null,
 				function(x)
 				{
 					if (x.responseText)
@@ -62,15 +62,16 @@ local has_ping6 = fs.access("/bin/ping6") or fs.access("/usr/bin/ping6")
     </legend>
     <br />
     <div style="width:50%; float:left">
-    <% if has_iperf3 then %>
-    <select name="iperf3_proto" style="width:auto">
+      <input style="margin: 1px 0" type="text" value="www.baidu.com" name="iperf" style="display:none"/>
+    <% if has_iperf then %>
+    <select name="iperf_proto" style="width:auto">
       <option value="" selected="selected">
       <%:iperflan%>
       </option>
       <option value="6">
       <%:iperfwan%>
       </option>
-      <input type="button" value="<%:Start the speed measurement server%>" class="cbi-button cbi-button-apply" onclick="update_status(this.form.iperf3)" />
+      <input type="button" value="<%:Start the speed measurement server%>" class="cbi-button cbi-button-apply" onclick="update_status(this.form.iperf,this.form.iperf_proto.selectedIndex)" />
       <% else %>
       </br>
       <%:You need to install iperf3 plug-in to start the test speed server%>
@@ -102,10 +103,10 @@ local has_ping6 = fs.access("/bin/ping6") or fs.access("/usr/bin/ping6")
     <div style="width:50%; float:left">
     <label class="cbi-value-title">
     <%:instructions:%> </label>
-<div class="cbi-value-field"> <%<br />
+<div class="cbi-value-field"><%# <br />
 <u> < font color = '# ff0000' > the terminal machine of speed measurement must be in the same local area network as the speed measurement server. </font></u> <br />
 Use steps: A, start the speed measurement server, B, download the test client, C, run the speed measurement client, D, enter the server IP address. <br />
-<br />%>
+<br /> -%>
 </div>
 <div class="cbi-value">
   <label class="cbi-value-title"><%:Iperf3 speed measurement software download:%></label>
