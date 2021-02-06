@@ -34,7 +34,7 @@ a new NetSpeedTest luci app bese luci-app-NetSpeedTest
 
 6.网络测速iperf3客户端下载地址：https://sipdboy.lanzoui.com/b01c3esih 密码:cpd6
 
-7.新修改插件难免有bug 请不要大惊小怪。欢迎提交bug。
+7.新插件难免有bug 请不要大惊小怪。欢迎提交bug。
 
 ## 编译说明 [![](https://img.shields.io/badge/-编译说明-F5F5F5.svg)](#编译说明-) 
 
