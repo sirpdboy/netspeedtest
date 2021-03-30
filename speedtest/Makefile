@@ -7,51 +7,52 @@
 
 include $(TOPDIR)/rules.mk
 
+PKG_ARCH:=x86_64
 PKG_NAME:=speedtest
 PKG_VERSION:=1.0.0
-PKG_RELEASE:=3
+PKG_RELEASE:=5
 
-
+PKG_SOURCE_URL:=https://ookla.bintray.com/download
+PKG_SOURCE:=ookla-$(PKG_NAME)-$(PKG_VERSION)-$(PKG_ARCH)-linux.tgz
+PKG_HASH:=skip
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=ookla speedtest by sirpdboy
 
-ifeq ($(ARCH),x86_64)
-	PKG_ARCH:=x86_64
-endif
-
+PKG_MAINTAINER:=sirpdboy <herboy2008@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
-  CATEGORY:=ookla speedtest by sirpdboy
-  SUBMENU:=1. Performance
-  TITLE:=A Speedtest application
-  FILE:=ookla-$(PKG_NAME)-$(PKG_VERSION)-$(PKG_ARCH)-linux.tgz 
-  BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
-  URL:=https://ookla.bintray.com/download/
-  DEPENDS:=+kmod-tun +wget +curl
+  SECTION:=net
+  CATEGORY:=Network
+  TITLE:=A Speedtest application 
+  DEPENDS:=+kmod-tun +wget +curl +python3
+  URL:=https://github.com/sirpdboy/NetSpeedTest
 endef
 
+# define Download/speedtest
+#  URL:=https://ookla.bintray.com/download
+#  URL_FILE:=ookla-$(PKG_NAME)-$(PKG_VERSION)-$(PKG_ARCH)-linux.tgz
+#   FILE:=tmpspeedtest
+#   HASH:=skip
+# endef
+
 define Package/$(PKG_NAME)/description
-Command line interface for testing internet bandwidth using speedtest.net
+  luci for testing internet bandwidth using speedtest.net
+  ookla speedtest by sirpdboy
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./file/$(PKG_NAME) $(PKG_BUILD_DIR)
+	mkdir -p $(PKG_BUILD_DIR)/$(PKG_NAME)
+	$(CP) ./file/speedtest $(PKG_BUILD_DIR)/$(PKG_NAME)
 endef
-
-define Build/Configure
-endef
-
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(PKG_NAME) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(PKG_NAME)/speedtest  $(1)/usr/bin
+
 endef
 
 define Package/$(PKG_NAME)/postinst
 endef
-
 $(eval $(call BuildPackage,$(PKG_NAME)))
