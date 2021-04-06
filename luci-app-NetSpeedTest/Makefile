@@ -19,7 +19,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=LuCI
 	SUBMENU:=3. Applications
 	TITLE:=LuCI Support for netspeedtest
-  DEPENDS:=+python3 +iperf3
+  DEPENDS:=+iperf3 +speedtest
   DESCRIPTION:=LuCI support Network speed test intranet and Extranet
   PKGARCH:=all
 endef
