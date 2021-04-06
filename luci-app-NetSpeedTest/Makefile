@@ -7,20 +7,19 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-netspeedtest
-PKG_VERSION:=1.5
-PKG_RELEASE:=20210330
+PKG_VERSION:=1.6
+PKG_RELEASE:=20210405
 PKG_LICENSE:=GPLv2
-PKG_MAINTAINER:=NetSpeedTest by sirpdboy <herboy2008@gmail.com>
-
+PKG_MAINTAINER:=sirpdboy
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
-  SECTION:=LuCI
-  CATEGORY:=LuCI
-  SUBMENU:=3. Applications
-  TITLE:=luci-app-netspeedtest
-  DEPENDS:=+iperf3 +speedtest
+	SECTION:=luci
+	CATEGORY:=LuCI
+	SUBMENU:=3. Applications
+	TITLE:=LuCI Support for netspeedtest
+  DEPENDS:=+python3 +iperf3
   DESCRIPTION:=LuCI support Network speed test intranet and Extranet
   PKGARCH:=all
 endef
