@@ -1,17 +1,16 @@
-
 module("luci.controller.netspeedtest", package.seeall)
 
 function index()
 
-	entry({"admin","network","netspeedtest"},cbi("netspeedtest/netspeedtest", {hideapplybtn=true, hidesavebtn=true, hideresetbtn=true}),_("netspeedtest"),90).dependent=true
+	entry({"admin","network","netspeedtest"}, cbi("netspeedtest", {hideapplybtn=true, hidesavebtn=true, hideresetbtn=true}), _("netspeedtest"),90).dependent=true
 
-	entry({"admin", "network","test_iperf0"}, post("test_iperf0"), nil).leaf = true
+	entry({"admin","network","test_iperf0"}, post("test_iperf0"), nil).leaf = true
 
-	entry({"admin", "network","test_iperf1"}, post("test_iperf1"), nil).leaf = true
+	entry({"admin","network","test_iperf1"}, post("test_iperf1"), nil).leaf = true
 
-	entry({"admin","network","netspeedtest", "run"}, call("run"))
+	entry({"admin","network","netspeedtest","run"}, call("run"))
 
-	entry({"admin", "network", "netspeedtest", "realtime_log"}, call("get_log")) 
+	entry({"admin","network","netspeedtest","realtime_log"}, call("get_log")) 
 
 end
 

@@ -8,7 +8,7 @@ else
 	status = translate("<strong><font color=\"red\">iperf3 服务端已停止</font></strong>")
 end
 
-o = Map("netspeedtest", "<font color='green'>" .. translate("netspeedtest") .."</font>",translate( "Network speed diagnosis test (including intranet and extranet)") )
+o = Map("netspeedtest", translate("netspeedtest"), translate("Network speed diagnosis test (including intranet and extranet)"))
 
 t = o:section(TypedSection, "netspeedtest", translate('iperf3 lanspeedtest'))
 t.anonymous = true
