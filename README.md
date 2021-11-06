@@ -40,6 +40,8 @@ a new netspeedtest luci app bese luci-app-netspeedtest
 
 10.新插件难免有bug 请不要大惊小怪。欢迎提交bug。
 
+11.安装需要依赖： python3  iperf3 。
+
 ## 编译说明 [![](https://img.shields.io/badge/-编译说明-F5F5F5.svg)](#编译说明-) 
 
 将NetSpeedTest 主题添加至 LEDE/OpenWRT 源码的方法。
