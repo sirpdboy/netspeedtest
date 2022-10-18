@@ -1,8 +1,8 @@
+## luci-app-netspeedtest
+
 ### 访问数：[![](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)] [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
 ![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明1.jpg)
-
-## luci-app-netspeedtest
 
 luci-app-netspeedtest 网络速度诊断测试（包括：内网网页版测速、内网iperf3吞吐测速、外网speedtest.net网速测试、特定服务器的端口延迟测速）
 
@@ -17,7 +17,7 @@ luci-app-netspeedtest 网络速度诊断测试（包括：内网网页版测速�
 
 <!-- TOC -->
 
-- [luci-app-netspeedtest](#luci-app-netspeedtest)
+## [菜单向导](#luci-app-netspeedtest)
   - [功能说明](#功能说明)
   - [注意事项](#iperf3吞吐测试注意事项)
   - [版本说明](#版本说明)
@@ -52,7 +52,7 @@ luci-app-netspeedtest 网络速度诊断测试（包括：内网网页版测速�
    - 增加内网测试网页版。
    - 外网测速，加入更详细测试报告。
    
-### 2021.10.18  网速测试V1.6：
+### 2021.3.2  网速测试V1.6：
    - 升级宽带测试带2.13内核。
    - 解决1.806以上版本不能编译问题。
    
@@ -67,7 +67,7 @@ luci-app-netspeedtest 网络速度诊断测试（包括：内网网页版测速�
 
     # feeds获取源码：
 	
-    src-git luci-app-ddns-go https://github.com/sirpdboy/netspeedtest
+    src-git netspeedtest https://github.com/sirpdboy/netspeedtest
  ``` 
   ```Brach
   
