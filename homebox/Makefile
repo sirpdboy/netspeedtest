@@ -5,8 +5,9 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=homebox
-PKG_VERSION:=0.0.0-dev.2024101306
-PKG_RELEASE:=3
+PKG_VERSION:=0.0.0.20231022
+PKG_REAL_VER:=0.0.0-dev.2023102203
+PKG_RELEASE:=1
 
 ifeq ($(ARCH),aarch64)
 	H_ARCH:=arm64
@@ -42,7 +43,7 @@ define Package/$(PKG_NAME)/description
 endef
 
 define Build/Prepare
-	[ ! -f $(PKG_BUILD_DIR)/server_Linux_$(H_ARCH).tar.gz ] && wget https://github.com/XGHeaven/homebox/releases/download/v$(PKG_VERSION)/server-linux-$(H_ARCH).tar.gz -O $(PKG_BUILD_DIR)/server-linux-$(H_ARCH).tar.gz
+	[ ! -f $(PKG_BUILD_DIR)/server-linux-$(H_ARCH).tar.gz ] && wget https://github.com/XGHeaven/homebox/releases/download/v$(PKG_REAL_VER)/server-linux-$(H_ARCH).tar.gz -O $(PKG_BUILD_DIR)/server-linux-$(H_ARCH).tar.gz
 	tar -xzvf $(PKG_BUILD_DIR)/server-linux-$(H_ARCH).tar.gz -C $(PKG_BUILD_DIR)
 endef
 
