@@ -40,12 +40,12 @@ __version__ = '2.1.3'
 
 
 class FakeShutdownEvent(object):
-    """Class to fake a threading.Event.isSet so that users of this module
+    """Class to fake a threading.Event.is_set so that users of this module
     are not required to register their own threading.Event()
     """
 
     @staticmethod
-    def isSet():
+    def is_set():
         "Dummy method to always return false"""
         return False
 
@@ -769,7 +769,7 @@ def print_dots(shutdown_event):
     status
     """
     def inner(current, total, start=False, end=False):
-        if shutdown_event.isSet():
+        if shutdown_event.is_set():
             return
 
         sys.stdout.write('.')
@@ -808,7 +808,7 @@ class HTTPDownloader(threading.Thread):
         try:
             if (timeit.default_timer() - self.starttime) <= self.timeout:
                 f = self._opener(self.request)
-                while (not self._shutdown_event.isSet() and
+                while (not self._shutdown_event.is_set() and
                         (timeit.default_timer() - self.starttime) <=
                         self.timeout):
                     self.result.append(len(f.read(10240)))
@@ -864,7 +864,7 @@ class HTTPUploaderData(object):
 
     def read(self, n=10240):
         if ((timeit.default_timer() - self.start) <= self.timeout and
-                not self._shutdown_event.isSet()):
+                not self._shutdown_event.is_set()):
             chunk = self.data.read(n)
             self.total.append(len(chunk))
             return chunk
@@ -902,7 +902,7 @@ class HTTPUploader(threading.Thread):
         request = self.request
         try:
             if ((timeit.default_timer() - self.starttime) <= self.timeout and
-                    not self._shutdown_event.isSet()):
+                    not self._shutdown_event.is_set()):
                 try:
                     f = self._opener(request)
                 except TypeError:
@@ -998,7 +998,7 @@ class SpeedtestResults(object):
         ]
 
         headers = {'Referer': 'http://c.speedtest.net/flash/speedtest.swf'}
-        request = build_request('://www.speedtest.net/api/api.php',
+        request = build_request('www.speedtest.net/api/api.php',
                                 data='&'.join(api_data).encode(),
                                 headers=headers, secure=self._secure)
         f, e = catch_request(request, opener=self._opener)
