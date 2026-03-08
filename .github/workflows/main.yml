@@ -52,7 +52,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-openwrt-24.10
           FEEDNAME: packages_ci
-          PACKAGES: luci-app-netspeedtest
+          PACKAGES: netspeedtest
           NO_REFRESH_CHECK: true
 
       - name: Upload artifacts
