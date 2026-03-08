@@ -104,7 +104,7 @@ The original version from abroad requires manually entering CMD command mode and
 # My other project
 
 - Watch Dog ： https://github.com/sirpdboy/luci-app-watchdog
-- Net Speedtest ： https://github.com/sirpdboy/luci-app-netspeedtest
+- Net Speedtest ： https://github.com/sirpdboy/netspeedtest
 - Task Plan : https://github.com/sirpdboy/luci-app-taskplan
 - Power Off Device : https://github.com/sirpdboy/luci-app-poweroffdevice
 - OpentoPD Theme : https://github.com/sirpdboy/luci-theme-opentopd
