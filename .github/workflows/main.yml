@@ -39,7 +39,7 @@ jobs:
           ARCH: ${{ matrix.arch }}-${{ matrix.sdk }}
           FEEDNAME: packages_ci
           PACKAGES: luci-app-netspeedtest
-          FEED_DIR: ${{ github.workspace }}/feed
+          # FEED_DIR: ${{ github.workspace }}/feed
           NO_REFRESH_CHECK: true
 
       - name: Upload artifacts
